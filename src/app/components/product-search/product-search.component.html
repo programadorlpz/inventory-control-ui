@@ -1,0 +1,32 @@
+<div class="product-search">
+  <h2>Buscar Productos</h2>
+
+  <!-- Selección del tipo de búsqueda -->
+  <select [(ngModel)]="searchType">
+    <option value="name">Buscar por Nombre</option>
+    <option value="user">Buscar por Usuario</option>
+    <option value="date">Buscar por Fecha</option>
+  </select>
+
+  <!-- Búsqueda por Nombre o Usuario -->
+  <div *ngIf="searchType === 'name' || searchType === 'user'">
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Escriba el nombre o usuario">
+  </div>
+
+  <!-- Búsqueda por Fecha -->
+  <div *ngIf="searchType === 'date'">
+    <input type="date" [(ngModel)]="startDate" placeholder="Fecha de inicio">
+    <input type="date" [(ngModel)]="endDate" placeholder="Fecha de fin">
+  </div>
+
+  <button (click)="searchProducts()">Buscar</button>
+
+  <!-- Resultados de la búsqueda -->
+  <div class="search-results">
+    <ul>
+      <li *ngFor="let product of products">
+        {{ product.name }} - Cantidad: {{ product.quantity }}
+      </li>
+    </ul>
+  </div>
+</div>

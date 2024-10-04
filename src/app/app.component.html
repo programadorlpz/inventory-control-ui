@@ -1,0 +1,15 @@
+<div class="role-selector">
+  <label for="role">Seleccionar Rol:</label>
+  <select
+    id="role"
+    [(ngModel)]="selectedRole"
+    (change)="onRoleSelect()"
+  >
+    <option value="">-- Seleccionar --</option>
+    <option value="administrator">Administrator</option>
+    <option value="support">Support</option>
+    <option value="salesAdvisor">Sales Advisor</option>
+  </select>
+</div>
+
+<router-outlet></router-outlet>

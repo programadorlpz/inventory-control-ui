@@ -1,0 +1,37 @@
+<div class="admin-panel">
+  <h2>Gestión de Productos</h2>
+
+  <!-- Formulario para crear nuevo producto -->
+  <div class="product-form">
+    <h3>Crear Nuevo Producto</h3>
+    <input type="text" [(ngModel)]="newProduct.name" placeholder="Nombre del producto">
+    <input type="number" [(ngModel)]="newProduct.quantity" placeholder="Cantidad">
+    <select [(ngModel)]="userName">
+      <option value="" disabled>Seleccionar Usuario</option>
+      <option value="Juan">Juan</option>
+      <option value="Carlos">Carlos</option>
+      <option value="Andrea">Andrea</option>
+    </select>
+    <button (click)="createProduct()">Crear Producto</button>
+  </div>
+
+  <!-- Lista de productos -->
+  <div class="product-list">
+    <h3>Lista de Productos</h3>
+    <ul>
+      <li *ngFor="let product of products">
+        {{ product.name }} (Cantidad: {{ product.quantity }})
+        <button (click)="selectProduct(product)">Editar</button>
+        <button (click)="deleteProduct(product.id)">Eliminar</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Formulario para actualizar producto -->
+  <div *ngIf="selectedProduct" class="product-form">
+    <h3>Actualizar Producto</h3>
+    <input type="text" [(ngModel)]="selectedProduct.name" placeholder="Nombre del producto">
+    <input type="number" [(ngModel)]="selectedProduct.quantity" placeholder="Cantidad">
+    <button (click)="updateProduct()">Actualizar Producto</button>
+  </div>
+</div>
